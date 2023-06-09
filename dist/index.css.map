@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": [],
-  "sourcesContent": [],
-  "mappings": "",
+  "sources": ["../src/index.css"],
+  "sourcesContent": [".infos_content-item:last-child .infos_separator {\n    display: none;\n}"],
+  "mappings": ";AAAA;AACI;AAAA;",
   "names": []
 }
