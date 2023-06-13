@@ -124,7 +124,7 @@ function appSwiper() {
       autoHeight: false,
       freeMode: false,
       slideToClickedSlide: false,
-      slidesPerView: 2,
+      slidesPerView: 'auto',
       spaceBetween: 32,
       slidesPerGroup: 1,
       rewind: true,

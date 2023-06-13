@@ -104,4 +104,24 @@ window.Webflow.push(() => {
       textDiv.textContent = frenchText;
     });
   }
+
+  // Hide logo on Home Page
+  window.onload = function () {
+    // Identify the current page
+    const path = window.location.pathname;
+    const page = path.split('/').pop();
+
+    // Define maximum tablet screen width
+    const maxTabletWidth = 768; // Adjust this value as per your design's breakpoint
+
+    // Apply styles only if it's the home page and viewport width is <= maxTabletWidth
+    if ((page == '' || page == 'index.html') && window.innerWidth <= maxTabletWidth) {
+      const homeHeroLogo = document.querySelector('.home-hero_logo');
+      const navbarLogoImg = document.querySelector('.navbar_logo-img');
+
+      // Check if elements exist
+      if (homeHeroLogo) homeHeroLogo.style.display = 'none';
+      if (navbarLogoImg) navbarLogoImg.style.display = 'block';
+    }
+  };
 });
