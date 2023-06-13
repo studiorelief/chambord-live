@@ -28,6 +28,9 @@ window.Webflow.push(() => {
     loadAttributesScript(
       'https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsfilter@1/cmsfilter.js'
     ),
+    loadAttributesScript(
+      'https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsstatic@1/cmsstatic.js'
+    ),
   ])
     .then(() => {
       console.log('All Finsweet Attributes scripts loaded');
@@ -62,4 +65,43 @@ window.Webflow.push(() => {
   const currentYear = new Date().getFullYear();
   const yearElement = document.querySelector('#year-chambord');
   yearElement.textContent = currentYear;
+
+  // Traduire les dates - A TESTER EN LOCAL
+  // Mapping entre les jours et mois en anglais et en français
+  const textMapping = {
+    Monday: 'Lundi',
+    Tuesday: 'Mardi',
+    Wednesday: 'Mercredi',
+    Thursday: 'Jeudi',
+    Friday: 'Vendredi',
+    Saturday: 'Samedi',
+    Sunday: 'Dimanche',
+    January: 'Janvier',
+    February: 'Février',
+    March: 'Mars',
+    April: 'Avril',
+    May: 'Mai',
+    June: 'Juin',
+    July: 'Juillet',
+    August: 'Août',
+    September: 'Septembre',
+    October: 'Octobre',
+    November: 'Novembre',
+    December: 'Décembre',
+  };
+
+  // Fonction pour traduire un jour ou un mois en anglais en français
+  function translateText(text) {
+    return textMapping[text] || 'Text not found';
+  }
+
+  // Sélectionner toutes les divs avec la classe 'hero-type-2_day' et traduire leur contenu
+  const textDivs = document.querySelectorAll('.hero-type-2_trad');
+  if (textDivs) {
+    textDivs.forEach(function (textDiv) {
+      const englishText = textDiv.textContent;
+      const frenchText = translateText(englishText);
+      textDiv.textContent = frenchText;
+    });
+  }
 });

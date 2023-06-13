@@ -18,7 +18,6 @@ function appSwiper() {
       loop: true,
       centeredSlides: true,
       autoHeight: false,
-      followFinger: true,
       freeMode: false,
       slideToClickedSlide: true,
       slidesPerView: 'auto',
@@ -71,7 +70,6 @@ function appSwiper() {
       loop: true,
       centeredSlides: false,
       autoHeight: false,
-      followFinger: true,
       freeMode: false,
       slideToClickedSlide: true,
       slidesPerView: 'auto',
@@ -111,6 +109,57 @@ function appSwiper() {
         },
       },
 
+      slideActiveClass: 'is-active',
+      slideDuplicateActiveClass: 'is-active',
+    });
+  });
+
+  // swiper show - actualités inner
+  $('.actualites_swiper-inner').each(function (index) {
+    const swiper = new Swiper($(this).find('.swiper')[0], {
+      direction: 'horizontal',
+      followFinger: true,
+      loop: true,
+      centeredSlides: false,
+      autoHeight: false,
+      freeMode: false,
+      slideToClickedSlide: false,
+      slidesPerView: 2,
+      spaceBetween: 32,
+      slidesPerGroup: 1,
+      rewind: true,
+      speed: 750,
+      // Navigation arrows
+      navigation: {
+        nextEl: '.actualites_arrow-right',
+        prevEl: '.actualites_arrow-left',
+      },
+      mousewheel: {
+        forceToAxis: true,
+        sensitivity: 1,
+        thresholdDelta: 1,
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      breakpoints: {
+        // mobile landscape
+        480: {
+          slidesPerView: 'auto',
+          spaceBetween: 32,
+        },
+        // tablet
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 32,
+        },
+        // desktop
+        992: {
+          slidesPerView: 'auto',
+          spaceBetween: 32,
+        },
+      },
       slideActiveClass: 'is-active',
       slideDuplicateActiveClass: 'is-active',
     });
