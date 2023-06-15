@@ -50,5 +50,20 @@ function jqueryCC() {
       rr.add(div.textContent.trim());
     }
   }, 0);
+
+  // Autoplay video in iOS
+  //PLAYS VIDEO IN LOW POWER MODE - Deploy on 1.4
+  $('body').on('click touchstart', function () {
+    const videoElement = document.getElementsByClassName('home-hero_bg-video');
+    if (videoElement.playing) {
+    } else {
+      $('.home-hero_bg-video').trigger('play');
+    }
+  });
+
+  // Reload on clic logo home
+  $('.home-hero_logo').click(function () {
+    location.reload();
+  });
 }
 export { jqueryCC };
