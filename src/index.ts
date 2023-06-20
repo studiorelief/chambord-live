@@ -31,6 +31,7 @@ window.Webflow.push(() => {
     loadAttributesScript(
       'https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsstatic@1/cmsstatic.js'
     ),
+    loadAttributesScript('https://cdn.jsdelivr.net/npm/@finsweet/cookie-consent@1/fs-cc.js'),
   ])
     .then(() => {
       console.log('All Finsweet Attributes scripts loaded');
