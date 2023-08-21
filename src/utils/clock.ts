@@ -1,5 +1,5 @@
 function clockHero() {
-  const deadline = '2023/09/12 18:00';
+  const deadline = '2023/09/08 18:00';
 
   function pad(num, size) {
     const s = '0' + num;
