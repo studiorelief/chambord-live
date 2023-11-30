@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 function loadSwiper() {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');

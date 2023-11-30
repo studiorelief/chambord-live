@@ -1,22 +1,20 @@
-function jqueryCC() {
+import $ from 'jquery';
+
+function jqueryCC(): void {
   // Hide preheader & move navbar when scroll
-  $(window).scroll(function () {
-    const windowScrollTop = $(this).scrollTop();
+  $(window).scroll(() => {
+    const windowScrollTop = $(window)?.scrollTop() || 0;
 
     if (windowScrollTop > 200 && $('.navbar_bg-when-scrolled').css('display') === 'block') {
-      $('.navbar_bg-when-scrolled').css({
-        transform: 'translateY(0rem)',
-      });
+      $('.navbar_bg-when-scrolled').css({ transform: 'translateY(0rem)' });
     } else {
-      $('.navbar_bg-when-scrolled').css({
-        transform: 'translateY(-7rem)',
-      });
+      $('.navbar_bg-when-scrolled').css({ transform: 'translateY(-7rem)' });
     }
   });
 
   // Scroll logo home
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 200) {
+  $(window).scroll(() => {
+    if (($(window)?.scrollTop() || 0) > 200) {
       $('.home-hero_logo').css({
         'max-height': '4rem',
         'margin-top': '-1.5rem',
@@ -32,38 +30,40 @@ function jqueryCC() {
   });
 
   // Grid CMS
-  $(document).ready(function () {
+  $(document).ready(() => {
     $('.programmation_item').each(function () {
-      $(this).css('grid-column', 'span ' + $(this).children('.column-span-size').text().trim());
-      console.log('column span added');
+      const gridColumnValue = 'span ' + $(this).children('.column-span-size').text().trim();
+      $(this).css('grid-column', gridColumnValue);
     });
   });
 
   // Checkbox filter
-  // Avoid duplicate categories filters - From body global
-  setTimeout(function () {
-    const rr = new Set();
-    for (const div of document.querySelectorAll('.checkbox-filter')) {
-      if (rr.has(div.textContent.trim())) {
-        div.parentNode.removeChild(div);
+  setTimeout(() => {
+    const uniqueTexts = new Set<string>();
+    document.querySelectorAll('.checkbox-filter').forEach((div) => {
+      const textContent = div.textContent?.trim() ?? '';
+      if (uniqueTexts.has(textContent)) {
+        div.parentNode?.removeChild(div);
       }
-      rr.add(div.textContent.trim());
-    }
+      uniqueTexts.add(textContent);
+    });
   }, 0);
 
   // Autoplay video in iOS
-  //PLAYS VIDEO IN LOW POWER MODE - Deploy on 1.4
-  $('body').on('click touchstart', function () {
-    const videoElement = document.getElementsByClassName('home-hero_bg-video');
-    if (videoElement.playing) {
-    } else {
-      $('.home-hero_bg-video').trigger('play');
-    }
+  $('body').on('click touchstart', () => {
+    const videoElements = document.getElementsByClassName('home-hero_bg-video');
+    Array.from(videoElements).forEach((videoElement: Element) => {
+      const htmlVideoElement = videoElement as HTMLVideoElement;
+      if (htmlVideoElement.paused || htmlVideoElement.ended) {
+        $(htmlVideoElement).trigger('play');
+      }
+    });
   });
 
-  // Reload on clic logo home
-  $('.home-hero_logo').click(function () {
+  // Reload on click logo home
+  $('.home-hero_logo').click(() => {
     location.reload();
   });
 }
+
 export { jqueryCC };
