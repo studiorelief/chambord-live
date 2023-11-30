@@ -12,13 +12,13 @@ function loadSwiper(): Promise<void> {
 }
 
 function appSwiper() {
-  // swiper show - programmation
-  $('.new-swiper').each(function () {
+  // swiper show - actualités
+  $('.actualites_swiper').each(function () {
     new Swiper($(this).find('.swiper')[0], {
       direction: 'horizontal',
       followFinger: true,
       loop: true,
-      centeredSlides: true,
+      centeredSlides: false,
       autoHeight: false,
       freeMode: false,
       slideToClickedSlide: true,
@@ -28,8 +28,8 @@ function appSwiper() {
       rewind: true,
       speed: 750,
       navigation: {
-        nextEl: '.programmation_arrow-right',
-        prevEl: '.programmation_arrow-left',
+        nextEl: '.actualites_arrow-right',
+        prevEl: '.actualites_arrow-left',
       },
       mousewheel: {
         forceToAxis: true,
@@ -59,13 +59,13 @@ function appSwiper() {
     });
   });
 
-  // swiper show - actualités
-  $('.actualites_swiper').each(function () {
+  // swiper show - programmation
+  $('.programmation_swiper').each(function () {
     new Swiper($(this).find('.swiper')[0], {
       direction: 'horizontal',
       followFinger: true,
       loop: true,
-      centeredSlides: false,
+      centeredSlides: true,
       autoHeight: false,
       freeMode: false,
       slideToClickedSlide: true,
@@ -75,8 +75,8 @@ function appSwiper() {
       rewind: true,
       speed: 750,
       navigation: {
-        nextEl: '.actualites_arrow-right',
-        prevEl: '.actualites_arrow-left',
+        nextEl: '.programmation_arrow-right',
+        prevEl: '.programmation_arrow-left',
       },
       mousewheel: {
         forceToAxis: true,
