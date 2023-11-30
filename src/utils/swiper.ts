@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-function loadSwiper() {
+function loadSwiper(): Promise<void> {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.type = 'module';
@@ -13,8 +13,8 @@ function loadSwiper() {
 
 function appSwiper() {
   // swiper show - programmation
-  $('.programmation_swiper').each(function (index) {
-    const swiper = new Swiper($(this).find('.swiper')[0], {
+  $('.new-swiper').each(function () {
+    new Swiper($(this).find('.swiper')[0], {
       direction: 'horizontal',
       followFinger: true,
       loop: true,
@@ -27,7 +27,6 @@ function appSwiper() {
       slidesPerGroup: 1,
       rewind: true,
       speed: 750,
-      // Navigation arrows
       navigation: {
         nextEl: '.programmation_arrow-right',
         prevEl: '.programmation_arrow-left',
@@ -42,31 +41,27 @@ function appSwiper() {
         onlyInViewport: true,
       },
       breakpoints: {
-        // mobile landscape
         480: {
           slidesPerView: 'auto',
           spaceBetween: 32,
         },
-        // tablet
         768: {
           slidesPerView: 'auto',
           spaceBetween: 32,
         },
-        // desktop
         992: {
           slidesPerView: 'auto',
           spaceBetween: '12.5%',
         },
       },
-
       slideActiveClass: 'is-active',
       slideDuplicateActiveClass: 'is-active',
     });
   });
 
   // swiper show - actualités
-  $('.actualites_swiper').each(function (index) {
-    const swiper = new Swiper($(this).find('.swiper')[0], {
+  $('.actualites_swiper').each(function () {
+    new Swiper($(this).find('.swiper')[0], {
       direction: 'horizontal',
       followFinger: true,
       loop: true,
@@ -79,7 +74,6 @@ function appSwiper() {
       slidesPerGroup: 1,
       rewind: true,
       speed: 750,
-      // Navigation arrows
       navigation: {
         nextEl: '.actualites_arrow-right',
         prevEl: '.actualites_arrow-left',
@@ -94,31 +88,27 @@ function appSwiper() {
         onlyInViewport: true,
       },
       breakpoints: {
-        // mobile landscape
         480: {
           slidesPerView: 'auto',
           spaceBetween: 32,
         },
-        // tablet
         768: {
           slidesPerView: 'auto',
           spaceBetween: 32,
         },
-        // desktop
         992: {
           slidesPerView: 'auto',
           spaceBetween: '12.5%',
         },
       },
-
       slideActiveClass: 'is-active',
       slideDuplicateActiveClass: 'is-active',
     });
   });
 
   // swiper show - actualités inner
-  $('.actualites_swiper-inner').each(function (index) {
-    const swiper = new Swiper($(this).find('.swiper')[0], {
+  $('.actualites_swiper-inner').each(function () {
+    new Swiper($(this).find('.swiper')[0], {
       direction: 'horizontal',
       followFinger: true,
       loop: true,
@@ -131,7 +121,6 @@ function appSwiper() {
       slidesPerGroup: 1,
       rewind: true,
       speed: 750,
-      // Navigation arrows
       navigation: {
         nextEl: '.actualites_arrow-right',
         prevEl: '.actualites_arrow-left',
@@ -146,17 +135,14 @@ function appSwiper() {
         onlyInViewport: true,
       },
       breakpoints: {
-        // mobile landscape
         480: {
           slidesPerView: 'auto',
           spaceBetween: 32,
         },
-        // tablet
         768: {
           slidesPerView: 1,
           spaceBetween: 32,
         },
-        // desktop
         992: {
           slidesPerView: 'auto',
           spaceBetween: 32,

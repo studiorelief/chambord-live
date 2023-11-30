@@ -64,6 +64,13 @@ function jqueryCC(): void {
   $('.home-hero_logo').click(() => {
     location.reload();
   });
+
+  // Hide if cms empty
+  $('.w-dyn-empty')
+    .parents('.programmation_component')
+    .each(function () {
+      $(this).hide();
+    });
 }
 
 export { jqueryCC };
