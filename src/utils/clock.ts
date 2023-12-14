@@ -48,7 +48,7 @@ function updateClock(id: string, endtime: string): void {
 }
 
 function clockHero(): void {
-  const deadline = '2023/12/06 10:00';
+  const deadline = '2024/06/29 18:00';
   updateClock('js-clock', deadline);
 }
 
