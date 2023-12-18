@@ -1,33 +1,27 @@
-function padNumber(num: number, size: number): string {
-  const s = '0' + num;
-  return s.substr(s.length - size);
+function padNumber(num: number, size: number) {
+  let s = num.toString();
+  while (s.length < size) s = '0' + s;
+  return s;
 }
 
-function parseDate(dateStr: string): number {
+function parseDate(dateStr: string) {
   const parsed = Date.parse(dateStr);
   if (!isNaN(parsed)) return parsed;
   return Date.parse(dateStr.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
 }
 
-interface TimeRemaining {
-  total: number;
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
-function getTimeRemaining(endtime: string): TimeRemaining {
-  const total = parseDate(endtime) - Date.parse(new Date().toISOString());
+function getTimeRemaining(endtime: string) {
+  // Utilisation de Date.now() pour obtenir le temps actuel en millisecondes
+  const total = parseDate(endtime) - Date.now();
   const seconds = Math.floor((total / 1000) % 60);
   const minutes = Math.floor((total / 1000 / 60) % 60);
-  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const hours = Math.floor((total / 1000 / 60 / 60) % 24);
   const days = Math.floor(total / (1000 * 60 * 60 * 24));
 
   return { total, days, hours, minutes, seconds };
 }
 
-function updateClock(id: string, endtime: string): void {
+function updateClock(id: string, endtime: string) {
   const daysElem = document.getElementById(`${id}-days`);
   const hoursElem = document.getElementById(`${id}-hours`);
   const minutesElem = document.getElementById(`${id}-minutes`);
@@ -38,6 +32,10 @@ function updateClock(id: string, endtime: string): void {
 
     if (time.total <= 0) {
       clearInterval(timeinterval);
+      if (daysElem) daysElem.innerHTML = '00';
+      if (hoursElem) hoursElem.innerHTML = '00';
+      if (minutesElem) minutesElem.innerHTML = '00';
+      if (secondsElem) secondsElem.innerHTML = '00';
     } else {
       if (daysElem) daysElem.innerHTML = padNumber(time.days, 2);
       if (hoursElem) hoursElem.innerHTML = padNumber(time.hours, 2);
@@ -47,8 +45,8 @@ function updateClock(id: string, endtime: string): void {
   }, 1000);
 }
 
-function clockHero(): void {
-  const deadline = '2024/06/29 18:00';
+function clockHero() {
+  const deadline = '2024/06/06 19:00'; // Assurez-vous que cette date est dans le bon fuseau horaire
   updateClock('js-clock', deadline);
 }
 
