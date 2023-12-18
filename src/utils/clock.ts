@@ -46,7 +46,7 @@ function updateClock(id: string, endtime: string) {
 }
 
 function clockHero() {
-  const deadline = '2024/06/06 19:00'; // Assurez-vous que cette date est dans le bon fuseau horaire
+  const deadline = '2024/06/29 19:00'; // Assurez-vous que cette date est dans le bon fuseau horaire
   updateClock('js-clock', deadline);
 }
 
